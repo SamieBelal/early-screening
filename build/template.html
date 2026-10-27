@@ -16,10 +16,6 @@
 <body>
 <main>
 
-  <nav class="langs" aria-label="Language">
-{{langNav}}
-  </nav>
-
   <header class="hero">
     <h1>{{h1}}</h1>
     <p class="intro">{{intro}}</p>
@@ -156,10 +152,21 @@
   </footer>
 
 </main>
-<button class="share-fab" type="button" id="share-btn" aria-label="{{shareLabel}}" data-share-text="{{shareText}}" data-copied="{{copied}}" data-copy="{{copy}}">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>
-  {{shareLabel}}
-</button>
+<div class="dock">
+  <nav class="lang-menu" id="lang-menu" aria-label="{{langWord}}" hidden>
+{{langNav}}
+  </nav>
+  <div class="dock-bar">
+    <button class="dock-lang" type="button" id="lang-btn" aria-expanded="false" aria-controls="lang-menu" data-words="{{cycleWords}}">
+      <span class="lang-word" id="lang-word">{{langWord}}</span>
+      <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+    </button>
+    <button class="dock-share" type="button" id="share-btn" data-share-text="{{shareText}}" data-copied="{{copied}}" data-copy="{{copy}}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>
+      {{shareLabel}}
+    </button>
+  </div>
+</div>
 <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
 <script src="{{root}}app.js"></script>
 </body>

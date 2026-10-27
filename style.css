@@ -50,23 +50,8 @@ p { margin: 0; }
 a { color: var(--action); text-underline-offset: 3px; }
 :focus-visible { outline: 3px solid var(--marker); outline-offset: 3px; border-radius: 6px; }
 
-/* Language switcher */
-.langs {
-  display: flex; flex-wrap: wrap; gap: 4px 6px;
-  padding-top: 16px;
-  font-size: 16px;
-}
-.langs a {
-  padding: 6px 10px;
-  border-radius: 999px;
-  color: var(--muted);
-  text-decoration: none;
-}
-.langs a:hover { color: var(--ink); background: var(--grid); }
-.langs a[aria-current="page"] { color: var(--ink); background: var(--grid); font-weight: 600; }
-
 /* Hero */
-.hero { padding: 32px 0 8px; }
+.hero { padding: 48px 0 8px; }
 .hero h1 {
   font-size: clamp(44px, 12vw, 68px);
   font-weight: 800;
@@ -242,29 +227,82 @@ html[lang="ur"] .findings b { font-weight: 700; }
 .findings cite { display: block; margin-top: 6px; font-style: normal; font-size: 14px; color: var(--muted); }
 .closer { margin-top: 18px; font-size: 20px; font-weight: 600; }
 
-/* Floating share button */
-.share-fab {
+/* Floating dock: language + share */
+.dock {
   position: fixed;
   inset-inline-end: max(16px, env(safe-area-inset-right));
   bottom: max(16px, env(safe-area-inset-bottom));
   z-index: 10;
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 20px;
-  border: 0;
+  display: flex; flex-direction: column; align-items: flex-end;
+}
+.dock-bar {
+  display: flex;
   border-radius: 999px;
   background: var(--marker);
+  box-shadow: 0 6px 20px rgba(23, 50, 74, .28);
+  overflow: hidden;
+}
+.dock-bar button {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 52px;
+  border: 0;
+  background: transparent;
   color: #17324a;
   font: inherit; font-weight: 800; font-size: 17px;
-  box-shadow: 0 6px 20px rgba(23, 50, 74, .28);
   cursor: pointer;
 }
-html[lang="ur"] .share-fab { font-weight: 700; padding: 8px 20px; }
-.share-fab svg { width: 20px; height: 20px; }
-.share-fab:active { transform: scale(.97); }
+html[lang="ur"] .dock-bar button { font-weight: 700; }
+.dock-bar button:active { background: rgba(23, 50, 74, .1); }
+.dock-bar svg { width: 20px; height: 20px; flex: none; }
+.dock-bar .dock-lang {
+  min-width: 124px;
+  justify-content: center;
+  padding-inline: 18px 14px;
+  border-inline-end: 1.5px solid rgba(23, 50, 74, .25);
+}
+.dock-lang .caret { width: 16px; height: 16px; transition: transform 200ms ease; }
+.dock-lang[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.lang-word { display: inline-block; white-space: nowrap; line-height: 1; transition: opacity 180ms ease; }
+.lang-word.fading { opacity: 0; }
+.dock-share { padding-inline: 16px 20px; }
+
+.lang-menu {
+  margin-bottom: 10px;
+  min-width: 220px;
+  padding: 6px;
+  border: 1px solid var(--grid-strong);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: 0 10px 30px rgba(23, 50, 74, .22);
+  transform-origin: bottom right;
+  animation: menu-in 160ms ease-out;
+}
+html[dir="rtl"] .lang-menu { transform-origin: bottom left; }
+.lang-menu[hidden] { display: none; }
+.lang-menu a {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 10px;
+  color: var(--ink);
+  font-size: 19px;
+  text-decoration: none;
+}
+.lang-menu a:hover { background: var(--grid); }
+.lang-menu a[aria-current="page"] { font-weight: 800; background: var(--grid); }
+.lang-menu a[lang="ar"] { font-family: "Noto Sans Arabic", system-ui, sans-serif; }
+.lang-menu a[lang="ur"] { font-family: "Noto Nastaliq Urdu", "Noto Sans Arabic", serif; }
+.lang-menu a[lang="bn"] { font-family: "Noto Sans Bengali", system-ui, sans-serif; }
+.lang-menu .tick { width: 18px; height: 18px; color: var(--action); }
+@keyframes menu-in { from { opacity: 0; transform: translateY(6px) scale(.97); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .lang-menu { animation: none; }
+  .lang-word, .dock-lang .caret { transition: none; }
+}
 .share-status {
   position: fixed;
   inset-inline-end: max(16px, env(safe-area-inset-right));
-  bottom: calc(max(16px, env(safe-area-inset-bottom)) + 64px);
+  bottom: calc(max(16px, env(safe-area-inset-bottom)) + 66px);
   z-index: 10;
   max-width: min(320px, calc(100vw - 32px));
   padding: 10px 14px;
