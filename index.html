@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Earlier, The Better</title>
+<meta name="description" content="Free, evidence-based resources for parents worried about their child's development: milestone tracking, autism screening, and how to get Early Intervention.">
+<meta property="og:title" content="The Earlier, The Better">
+<meta property="og:description" content="Worried about your child's development? Free screening tools and next steps for parents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbf7f2;
+    --surface: #ffffff;
+    --ink: #2a2522;
+    --muted: #6b625c;
+    --line: #ebe3da;
+    --accent: #c4623a;
+    --accent-ink: #ffffff;
+    --soft: #f6e7dd;
+    --calm: #3f6b5e;
+    --calm-soft: #e3eee9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1b1816;
+      --surface: #25211e;
+      --ink: #f2ece6;
+      --muted: #b0a59c;
+      --line: #3a342f;
+      --accent: #e08a62;
+      --accent-ink: #1b1816;
+      --soft: #3a2a22;
+      --calm: #8fc2b2;
+      --calm-soft: #23332e;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.6 Inter, system-ui, -apple-system, sans-serif;
+  }
+  main { max-width: 680px; margin: 0 auto; padding: 0 16px 48px; }
+  h1, h2, h3 { font-family: Fraunces, Georgia, serif; line-height: 1.2; margin: 0; }
+  a { color: var(--accent); }
+  .hero { padding: 56px 0 32px; }
+  .eyebrow {
+    font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--calm);
+  }
+  .hero h1 { font-size: clamp(36px, 9vw, 54px); margin: 10px 0 16px; }
+  .hero p { font-size: 19px; color: var(--muted); margin: 0; }
+  section { margin-top: 44px; }
+  section > h2 { font-size: 26px; margin-bottom: 6px; }
+  section > p.lead { color: var(--muted); margin: 0 0 18px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+  .card h3 { font-size: 20px; margin-bottom: 4px; }
+  .card .age {
+    display: inline-block; font-size: 13px; font-weight: 600;
+    background: var(--calm-soft); color: var(--calm);
+    padding: 3px 10px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .card p { margin: 6px 0 0; }
+  .btn {
+    display: inline-block; margin-top: 14px;
+    background: var(--accent); color: var(--accent-ink);
+    text-decoration: none; font-weight: 600;
+    padding: 12px 18px; border-radius: 12px;
+  }
+  .btn.secondary {
+    background: transparent; color: var(--accent);
+    border: 1.5px solid var(--accent); margin-left: 6px;
+  }
+  .steps { list-style: none; padding: 0; margin: 0; counter-reset: step; }
+  .steps li {
+    position: relative; padding: 0 0 18px 48px; counter-increment: step;
+  }
+  .steps li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 0;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--soft); color: var(--accent);
+    font-weight: 700; display: grid; place-items: center;
+  }
+  .steps strong { display: block; }
+  .steps span { color: var(--muted); }
+  .callout {
+    background: var(--soft); border-radius: 16px; padding: 20px; margin-top: 8px;
+  }
+  .callout h3 { font-size: 20px; margin-bottom: 6px; }
+  .callout p { margin: 6px 0 0; }
+  .phone { font-size: 22px; font-weight: 600; text-decoration: none; }
+  .stats { display: grid; gap: 12px; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+  .stat .num { font-family: Fraunces, Georgia, serif; font-size: 34px; font-weight: 700; color: var(--accent); line-height: 1.1; }
+  .stat p { margin: 6px 0 0; }
+  .stat cite { display: block; font-style: normal; font-size: 13px; color: var(--muted); margin-top: 8px; }
+  .note { font-size: 15px; color: var(--muted); }
+  footer {
+    margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line);
+    font-size: 14px; color: var(--muted);
+  }
+  footer p { margin: 0 0 10px; }
+  @media (max-width: 420px) {
+    .btn.secondary { margin-left: 0; }
+    .btn { display: block; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <header class="hero">
+    <div class="eyebrow">For parents</div>
+    <h1>The earlier, the better.</h1>
+    <p>If something about your child's development feels off, you don't have to wait for a diagnosis to get help. Here's where to start.</p>
+  </header>
+
+  <section>
+    <h2>Is my child on track?</h2>
+    <p class="lead">Two free tools, based on your child's age.</p>
+
+    <div class="card">
+      <span class="age">2 months – 5 years</span>
+      <h3>CDC Milestone Tracker</h3>
+      <p>A free app from the CDC. Check off milestones with photos and videos, and get a summary you can show your child's doctor.</p>
+      <a class="btn" href="https://www.cdc.gov/milestonetracker" target="_blank" rel="noopener">Get the free app</a>
+    </div>
+
+    <div class="card">
+      <span class="age">16 – 30 months</span>
+      <h3>M-CHAT-R/F autism screening</h3>
+      <p>The 20-question checklist pediatricians use at the 18- and 24-month checkups. It's a screening, not a diagnosis. It tells you whether it's worth a closer look.</p>
+      <p>Ask your pediatrician to do it with you, or look at it ahead of time on the official site.</p>
+      <a class="btn" href="https://mchatscreen.com/" target="_blank" rel="noopener">Official M-CHAT site</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Worried? Here's what to do.</h2>
+    <p class="lead">Do these at the same time, not one after another.</p>
+    <ol class="steps">
+      <li><strong>Talk to your pediatrician.</strong><span>Tell them what you've noticed and ask for a developmental screening.</span></li>
+      <li><strong>Get on a waitlist now.</strong><span>Autism evaluations can take months to a year to get into. Your spot in line starts when you call.</span></li>
+      <li><strong>Start therapy while you wait.</strong><span>Speech therapy and occupational therapy (OT) don't require an autism diagnosis.</span></li>
+      <li><strong>Call Early Intervention (under 3).</strong><span>Every state has a free or low-cost program for babies and toddlers. You can call yourself. No referral or diagnosis needed.</span></li>
+      <li><strong>Age 3 or older? Call your school district.</strong><span>Your local public school district must evaluate children with possible disabilities for free, even if they aren't in school yet.</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="callout">
+      <h3>In Illinois</h3>
+      <p>Call to reach the Early Intervention office for your county:</p>
+      <p><a class="phone" href="tel:18008436154">1-800-843-6154</a></p>
+      <p class="note">Anyone can refer a child for a free screening. Family fees are currently suspended.</p>
+      <a class="btn" href="https://idec.illinois.gov/forparents/early-intervention" target="_blank" rel="noopener">Illinois Early Intervention</a>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>In another state?</h3>
+      <p>The CDC keeps a list of every state's Early Intervention contact.</p>
+      <a class="btn" href="https://www.cdc.gov/act-early/early-intervention/contact-information-by-state.html" target="_blank" rel="noopener">Find your state</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Why early matters</h2>
+    <p class="lead">A child's brain changes fastest in the first few years. The research backs up starting early.</p>
+    <div class="stats">
+      <div class="stat">
+        <div class="num">~Age 4</div>
+        <p>The typical age a child in the US is diagnosed with autism, often years after the first signs.</p>
+        <cite>Shaw et al., MMWR 2025 · <a href="https://doi.org/10.15585/mmwr.ss7402a1" target="_blank" rel="noopener">doi:10.15585/mmwr.ss7402a1</a></cite>
+      </div>
+      <div class="stat">
+        <div class="num">+17.6 vs +7</div>
+        <p>In one trial, toddlers who started therapy at 18–30 months gained about 17.6 IQ points over 2 years, compared with 7 points with usual community care.</p>
+        <cite>Dawson et al., Pediatrics 2010 · <a href="https://doi.org/10.1542/peds.2009-0958" target="_blank" rel="noopener">doi:10.1542/peds.2009-0958</a></cite>
+      </div>
+      <div class="stat">
+        <div class="num">3×</div>
+        <p>Children diagnosed before age 2½ were three times more likely to show big improvements in social skills within 1–2 years.</p>
+        <cite>Gabbay-Dizdar et al., Autism 2022 · <a href="https://doi.org/10.1177/13623613211049011" target="_blank" rel="noopener">doi:10.1177/13623613211049011</a></cite>
+      </div>
+    </div>
+    <p class="note" style="margin-top:16px">Starting later still helps. Starting earlier can help more.</p>
+  </section>
+
+  <footer>
+    <p><strong>This page is not medical advice</strong> and isn't a substitute for your child's doctor. Screening tools can miss things. If you're still worried after a normal result, trust your gut and talk to your pediatrician.</p>
+    <p>Made by Samie Belal, a medical student. This page only links to official resources. It isn't affiliated with the CDC, the State of Illinois, or the M-CHAT authors.</p>
+  </footer>
+
+</main>
+</body>
+</html>
