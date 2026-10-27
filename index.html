@@ -1,286 +1,41 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Earlier, The Better</title>
 <meta name="description" content="Free, evidence-based resources for parents worried about their child's development: milestone tracking, autism screening, and how to get Early Intervention.">
 <meta property="og:title" content="The Earlier, The Better">
-<meta property="og:description" content="Worried about your child's development? Free screening tools and next steps for parents.">
+<meta property="og:description" content="Free resources for parents worried about their child's development.">
+<link rel="alternate" hreflang="en" href="https://samiebelal.github.io/early-screening/">
+<link rel="alternate" hreflang="es" href="https://samiebelal.github.io/early-screening/es/">
+<link rel="alternate" hreflang="ar" href="https://samiebelal.github.io/early-screening/ar/">
+<link rel="alternate" hreflang="ur" href="https://samiebelal.github.io/early-screening/ur/">
+<link rel="alternate" hreflang="bn" href="https://samiebelal.github.io/early-screening/bn/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --paper: #f6f9fa;
-    --grid: #dce8ec;
-    --grid-strong: #c4d7de;
-    --ink: #17324a;
-    --muted: #54697a;
-    --action: #1d5fa8;
-    --action-ink: #ffffff;
-    --marker: #f4b740;
-    --marker-soft: #fbe3ae;
-    --surface: #ffffff;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --paper: #0f1c26;
-      --grid: #1b2d3a;
-      --grid-strong: #27404f;
-      --ink: #e8f0f4;
-      --muted: #9db0bd;
-      --action: #78aeea;
-      --action-ink: #0f1c26;
-      --marker: #f4b740;
-      --marker-soft: #5a4416;
-      --surface: #142430;
-    }
-  }
-
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font: 400 18px/1.55 "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, sans-serif;
-  }
-  main { max-width: 640px; margin: 0 auto; padding: 0 16px 56px; }
-  h1, h2, h3 { margin: 0; line-height: 1.15; }
-  h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.01em; }
-  h3 { font-size: 20px; font-weight: 600; }
-  p { margin: 0; }
-  a { color: var(--action); text-underline-offset: 3px; }
-  :focus-visible { outline: 3px solid var(--marker); outline-offset: 3px; border-radius: 6px; }
-
-  /* Hero */
-  .hero { padding: 48px 0 8px; }
-  .hero h1 {
-    font-size: clamp(44px, 12vw, 68px);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 0.98;
-  }
-  .hero .intro { margin-top: 18px; font-size: 20px; color: var(--muted); max-width: 32ch; }
-
-  /* Timeline on growth-chart paper */
-  .timeline {
-    margin: 36px 0 0;
-    padding: 20px 16px 14px;
-    border: 1px solid var(--grid-strong);
-    border-radius: 10px;
-    background-color: var(--surface);
-    background-image:
-      linear-gradient(var(--grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 16px 16px;
-  }
-  .dx-label {
-    position: relative;
-    height: 44px;
-  }
-  .dx-label span {
-    position: absolute;
-    right: 20%;
-    bottom: 6px;
-    margin-right: -1px;
-    padding-right: 8px;
-    text-align: right;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.25;
-    max-width: 70%;
-  }
-  .track {
-    position: relative;
-    height: 72px;
-  }
-  .window {
-    position: absolute; inset: 0 auto 0 0;
-    width: 60%;
-    background: var(--marker);
-    border-radius: 6px 0 0 6px;
-    display: flex; align-items: flex-end;
-    padding: 8px 10px;
-    color: #17324a;
-    font-size: 14px; font-weight: 600; line-height: 1.2;
-    transform-origin: left center;
-    animation: grow 900ms cubic-bezier(.2,.7,.2,1) 200ms both;
-  }
-  .gap {
-    position: absolute; top: 0; bottom: 0;
-    left: 60%; width: 20%;
-    background: repeating-linear-gradient(135deg, var(--marker-soft) 0 6px, transparent 6px 12px);
-  }
-  .dx-line {
-    position: absolute; top: -44px; bottom: 0;
-    left: 80%;
-    border-left: 2px dashed var(--ink);
-  }
-  .ticks {
-    position: relative;
-    list-style: none; margin: 0; padding: 0;
-    height: 26px;
-    border-top: 2px solid var(--ink);
-    font-size: 13px; color: var(--muted);
-  }
-  .ticks li { position: absolute; top: 4px; transform: translateX(-50%); }
-  .ticks li:first-child { transform: none; }
-  .ticks li:last-child { transform: translateX(-100%); }
-  .timeline figcaption { margin-top: 14px; font-size: 16px; }
-  .timeline figcaption small { display: block; margin-top: 6px; font-size: 13px; color: var(--muted); }
-  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-  @media (prefers-reduced-motion: reduce) { .window { animation: none; } }
-
-  /* Sections */
-  section { margin-top: 56px; }
-  section > h2 + p { margin-top: 8px; color: var(--muted); }
-
-  /* Resource rows */
-  .rows { margin-top: 20px; border-top: 1px solid var(--grid-strong); }
-  .row {
-    display: grid;
-    grid-template-columns: 96px 1fr;
-    gap: 16px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--grid-strong);
-  }
-  .row .range {
-    font-size: 15px; font-weight: 800; line-height: 1.2;
-    color: var(--action);
-    padding-top: 3px;
-  }
-  .row p { margin-top: 6px; }
-  .row .fine { font-size: 15px; color: var(--muted); }
-  .btn {
-    display: inline-block;
-    margin-top: 14px;
-    padding: 12px 18px;
-    border-radius: 8px;
-    background: var(--action);
-    color: var(--action-ink);
-    font-weight: 600;
-    text-decoration: none;
-  }
-  .btn:hover { filter: brightness(1.08); }
-
-  /* Checklist */
-  .checklist { list-style: none; margin: 20px 0 0; padding: 0; }
-  .checklist li + li { margin-top: 10px; }
-  .check {
-    display: grid;
-    grid-template-columns: 28px 1fr;
-    gap: 14px;
-    width: 100%;
-    padding: 16px;
-    border: 1px solid var(--grid-strong);
-    border-radius: 10px;
-    background: var(--surface);
-    color: inherit;
-    font: inherit;
-    text-align: left;
-    cursor: pointer;
-  }
-  .box {
-    width: 28px; height: 28px;
-    border: 2px solid var(--ink);
-    border-radius: 6px;
-    display: grid; place-items: center;
-    transition: background 150ms ease;
-  }
-  .box svg { width: 18px; height: 18px; opacity: 0; transition: opacity 150ms ease; }
-  .check[aria-pressed="true"] .box { background: var(--marker); border-color: var(--marker); }
-  .check[aria-pressed="true"] .box svg { opacity: 1; }
-  .check strong { display: block; font-weight: 600; }
-  .check span.detail { display: block; margin-top: 4px; color: var(--muted); font-size: 16px; }
-  .check span.detail b { color: var(--ink); font-weight: 600; }
-  .checklist-note { margin-top: 12px; font-size: 15px; color: var(--muted); }
-
-  /* State callout */
-  .callout {
-    margin-top: 56px;
-    padding: 28px 22px;
-    border-radius: 12px;
-    background: var(--ink);
-    color: var(--paper);
-  }
-  .callout h2 { color: var(--paper); }
-  .callout p { margin-top: 10px; }
-  .callout blockquote {
-    margin: 18px 0 0;
-    padding: 14px 16px;
-    border-left: 4px solid var(--marker);
-    background: rgba(255,255,255,.08);
-    font-size: 19px;
-  }
-  .callout .btn { background: var(--marker); color: #17324a; }
-
-  /* Research */
-  .findings { list-style: none; margin: 20px 0 0; padding: 0; }
-  .findings li { padding: 18px 0; border-bottom: 1px solid var(--grid-strong); }
-  .findings li:first-child { border-top: 1px solid var(--grid-strong); }
-  .findings b { font-weight: 800; }
-  .findings cite { display: block; margin-top: 6px; font-style: normal; font-size: 14px; color: var(--muted); }
-  .closer { margin-top: 18px; font-size: 20px; font-weight: 600; }
-
-  .share-fab {
-    position: fixed;
-    right: max(16px, env(safe-area-inset-right));
-    bottom: max(16px, env(safe-area-inset-bottom));
-    z-index: 10;
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 20px;
-    border: 0;
-    border-radius: 999px;
-    background: var(--marker);
-    color: #17324a;
-    font: inherit; font-weight: 800; font-size: 17px;
-    box-shadow: 0 6px 20px rgba(23, 50, 74, .28);
-    cursor: pointer;
-  }
-  .share-fab svg { width: 20px; height: 20px; }
-  .share-fab:active { transform: scale(.97); }
-  .share-status {
-    position: fixed;
-    right: max(16px, env(safe-area-inset-right));
-    bottom: calc(max(16px, env(safe-area-inset-bottom)) + 64px);
-    z-index: 10;
-    max-width: min(320px, calc(100vw - 32px));
-    padding: 10px 14px;
-    border-radius: 8px;
-    background: var(--ink);
-    color: var(--paper);
-    font-size: 15px; font-weight: 600;
-    overflow-wrap: anywhere;
-  }
-  .share-status:empty { display: none; }
-  main { padding-bottom: 104px; }
-
-  footer {
-    margin-top: 64px; padding-top: 20px;
-    border-top: 1px solid var(--grid-strong);
-    font-size: 15px; color: var(--muted);
-  }
-  footer p + p { margin-top: 10px; }
-
-  @media (max-width: 400px) {
-    .row { grid-template-columns: 1fr; gap: 6px; }
-    .btn { display: block; text-align: center; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main>
+
+  <nav class="langs" aria-label="Language">
+    <a href="./" lang="en" hreflang="en" aria-current="page">English</a>
+    <a href="es/" lang="es" hreflang="es">Español</a>
+    <a href="ar/" lang="ar" hreflang="ar">العربية</a>
+    <a href="ur/" lang="ur" hreflang="ur">اردو</a>
+    <a href="bn/" lang="bn" hreflang="bn">বাংলা</a>
+  </nav>
 
   <header class="hero">
     <h1>The earlier, the better.</h1>
     <p class="intro">If something about your child's development feels off, you don't need a diagnosis to get help.</p>
 
-    <figure class="timeline" aria-label="Timeline from birth to age 5. Early Intervention covers birth to age 3. The typical age of autism diagnosis in the US is about 4.">
-      <div class="dx-label"><span>Typical autism diagnosis: about age 4</span></div>
+    <figure class="timeline" dir="ltr" aria-label="Timeline from birth to age 5. Early Intervention covers birth to age 3. The typical age of autism diagnosis in the US is about 4.">
+      <div class="dx-label"><span dir="ltr">Typical autism diagnosis: about age 4</span></div>
       <div class="track">
-        <div class="window">Early Intervention: birth to 3</div>
+        <div class="window" dir="ltr">Early Intervention: birth to 3</div>
         <div class="gap"></div>
         <div class="dx-line"></div>
       </div>
@@ -292,9 +47,9 @@
         <li style="left:80%">4</li>
         <li style="left:100%">5</li>
       </ol>
-      <figcaption>
+      <figcaption dir="ltr">
         Every state offers Early Intervention from birth to age 3. But most autistic kids in the US aren't diagnosed until about 4.
-        <small>Shaw et al., MMWR 2025. <a href="https://doi.org/10.15585/mmwr.ss7402a1" target="_blank" rel="noopener">doi:10.15585/mmwr.ss7402a1</a></small>
+        <small dir="ltr">Shaw et al., MMWR 2025. <a href="https://doi.org/10.15585/mmwr.ss7402a1" target="_blank" rel="noopener">doi:10.15585/mmwr.ss7402a1</a></small>
       </figcaption>
     </figure>
   </header>
@@ -389,15 +144,15 @@
     <ul class="findings">
       <li>
         In one trial, toddlers who started therapy at 18 to 30 months gained <b>about 17.6 IQ points</b> over two years, compared with <b>7 points</b> with usual community care.
-        <cite>Dawson et al., Pediatrics 2010. <a href="https://doi.org/10.1542/peds.2009-0958" target="_blank" rel="noopener">doi:10.1542/peds.2009-0958</a></cite>
+        <cite dir="ltr">Dawson et al., Pediatrics 2010. <a href="https://doi.org/10.1542/peds.2009-0958" target="_blank" rel="noopener">doi:10.1542/peds.2009-0958</a></cite>
       </li>
       <li>
         Children diagnosed before age 2½ were <b>three times more likely</b> to show big improvements in social skills within one to two years.
-        <cite>Gabbay-Dizdar et al., Autism 2022. <a href="https://doi.org/10.1177/13623613211049011" target="_blank" rel="noopener">doi:10.1177/13623613211049011</a></cite>
+        <cite dir="ltr">Gabbay-Dizdar et al., Autism 2022. <a href="https://doi.org/10.1177/13623613211049011" target="_blank" rel="noopener">doi:10.1177/13623613211049011</a></cite>
       </li>
       <li>
         Babies showing early signs of autism whose parents got 10 coaching sessions were far less likely to meet criteria for autism at age 3: <b>6.7%, compared with 20.5%</b> with usual care.
-        <cite>Whitehouse et al., JAMA Pediatrics 2021. <a href="https://doi.org/10.1001/jamapediatrics.2021.3298" target="_blank" rel="noopener">doi:10.1001/jamapediatrics.2021.3298</a></cite>
+        <cite dir="ltr">Whitehouse et al., JAMA Pediatrics 2021. <a href="https://doi.org/10.1001/jamapediatrics.2021.3298" target="_blank" rel="noopener">doi:10.1001/jamapediatrics.2021.3298</a></cite>
       </li>
     </ul>
     <p class="closer">Starting later still helps. Starting earlier can help more.</p>
@@ -409,55 +164,11 @@
   </footer>
 
 </main>
-<button class="share-fab" type="button" id="share-btn" aria-label="Share this page">
+<button class="share-fab" type="button" id="share-btn" aria-label="Share" data-share-text="Free resources for parents worried about their child's development." data-copied="Link copied. Paste it in a text or DM." data-copy="Copy this link: ">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>
   Share
 </button>
 <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
-<script>
-  (function () {
-    var KEY = "early-screening-checklist";
-    var saved = {};
-    try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
-    document.querySelectorAll(".check").forEach(function (btn) {
-      var k = btn.dataset.key;
-      if (saved[k]) btn.setAttribute("aria-pressed", "true");
-      btn.addEventListener("click", function () {
-        var on = btn.getAttribute("aria-pressed") !== "true";
-        btn.setAttribute("aria-pressed", on ? "true" : "false");
-        saved[k] = on;
-        try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
-      });
-    });
-
-    var shareBtn = document.getElementById("share-btn");
-    var status = document.getElementById("share-status");
-    shareBtn.addEventListener("click", function () {
-      var data = {
-        title: "The Earlier, The Better",
-        text: "Free resources for parents worried about their child's development.",
-        url: location.href
-      };
-      if (navigator.share) {
-        navigator.share(data).catch(function () {});
-        return;
-      }
-      var show = function (msg) {
-        status.textContent = msg;
-        clearTimeout(show.t);
-        show.t = setTimeout(function () { status.textContent = ""; }, 4000);
-      };
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(location.href).then(function () {
-          show("Link copied. Paste it in a text or DM.");
-        }, function () {
-          show("Copy this link: " + location.href);
-        });
-      } else {
-        show("Copy this link: " + location.href);
-      }
-    });
-  })();
-</script>
+<script src="app.js"></script>
 </body>
 </html>
