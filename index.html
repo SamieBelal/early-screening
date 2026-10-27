@@ -224,6 +224,16 @@
   .findings cite { display: block; margin-top: 6px; font-style: normal; font-size: 14px; color: var(--muted); }
   .closer { margin-top: 18px; font-size: 20px; font-weight: 600; }
 
+  .share {
+    margin-top: 56px;
+    padding: 24px 22px;
+    border: 2px dashed var(--grid-strong);
+    border-radius: 12px;
+  }
+  .share p { margin-top: 8px; color: var(--muted); }
+  .share button.btn { border: 0; font: inherit; font-weight: 600; cursor: pointer; }
+  .share .status { margin-top: 10px; min-height: 1.4em; font-size: 15px; font-weight: 600; color: var(--ink); }
+
   footer {
     margin-top: 64px; padding-top: 20px;
     border-top: 1px solid var(--grid-strong);
@@ -370,6 +380,13 @@
     <p class="closer">Starting later still helps. Starting earlier can help more.</p>
   </section>
 
+  <section class="share">
+    <h2>Know a parent who needs this?</h2>
+    <p>Send them this page. It might help them start sooner.</p>
+    <button class="btn" type="button" id="share-btn">Share this page</button>
+    <p class="status" id="share-status" role="status" aria-live="polite"></p>
+  </section>
+
   <footer>
     <p><strong>This page is not medical advice</strong> and isn't a substitute for your child's doctor. Screening tools can miss things. If you're still worried after a normal result, trust your gut and talk to your pediatrician.</p>
     <p>Made by Samie Belal, a medical student. This page only links to official resources. It isn't affiliated with the CDC, any state program, or the M-CHAT authors.</p>
@@ -390,6 +407,29 @@
         saved[k] = on;
         try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
       });
+    });
+
+    var shareBtn = document.getElementById("share-btn");
+    var status = document.getElementById("share-status");
+    shareBtn.addEventListener("click", function () {
+      var data = {
+        title: "The Earlier, The Better",
+        text: "Free resources for parents worried about their child's development.",
+        url: location.href
+      };
+      if (navigator.share) {
+        navigator.share(data).catch(function () {});
+        return;
+      }
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(location.href).then(function () {
+          status.textContent = "Link copied. Paste it in a text or DM.";
+        }, function () {
+          status.textContent = "Copy this link: " + location.href;
+        });
+      } else {
+        status.textContent = "Copy this link: " + location.href;
+      }
     });
   })();
 </script>
