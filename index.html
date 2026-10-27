@@ -9,112 +9,230 @@
 <meta property="og:description" content="Worried about your child's development? Free screening tools and next steps for parents.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #fbf7f2;
+    --paper: #f6f9fa;
+    --grid: #dce8ec;
+    --grid-strong: #c4d7de;
+    --ink: #17324a;
+    --muted: #54697a;
+    --action: #1d5fa8;
+    --action-ink: #ffffff;
+    --marker: #f4b740;
+    --marker-soft: #fbe3ae;
     --surface: #ffffff;
-    --ink: #2a2522;
-    --muted: #6b625c;
-    --line: #ebe3da;
-    --accent: #c4623a;
-    --accent-ink: #ffffff;
-    --soft: #f6e7dd;
-    --calm: #3f6b5e;
-    --calm-soft: #e3eee9;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1b1816;
-      --surface: #25211e;
-      --ink: #f2ece6;
-      --muted: #b0a59c;
-      --line: #3a342f;
-      --accent: #e08a62;
-      --accent-ink: #1b1816;
-      --soft: #3a2a22;
-      --calm: #8fc2b2;
-      --calm-soft: #23332e;
+      --paper: #0f1c26;
+      --grid: #1b2d3a;
+      --grid-strong: #27404f;
+      --ink: #e8f0f4;
+      --muted: #9db0bd;
+      --action: #78aeea;
+      --action-ink: #0f1c26;
+      --marker: #f4b740;
+      --marker-soft: #5a4416;
+      --surface: #142430;
     }
   }
+
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    background: var(--bg);
+    background: var(--paper);
     color: var(--ink);
-    font: 400 17px/1.6 Inter, system-ui, -apple-system, sans-serif;
+    font: 400 18px/1.55 "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, sans-serif;
   }
-  main { max-width: 680px; margin: 0 auto; padding: 0 16px 48px; }
-  h1, h2, h3 { font-family: Fraunces, Georgia, serif; line-height: 1.2; margin: 0; }
-  a { color: var(--accent); }
-  .hero { padding: 56px 0 32px; }
-  .eyebrow {
-    font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--calm);
+  main { max-width: 640px; margin: 0 auto; padding: 0 16px 56px; }
+  h1, h2, h3 { margin: 0; line-height: 1.15; }
+  h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.01em; }
+  h3 { font-size: 20px; font-weight: 600; }
+  p { margin: 0; }
+  a { color: var(--action); text-underline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--marker); outline-offset: 3px; border-radius: 6px; }
+
+  /* Hero */
+  .hero { padding: 48px 0 8px; }
+  .hero h1 {
+    font-size: clamp(44px, 12vw, 68px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 0.98;
   }
-  .hero h1 { font-size: clamp(36px, 9vw, 54px); margin: 10px 0 16px; }
-  .hero p { font-size: 19px; color: var(--muted); margin: 0; }
-  section { margin-top: 44px; }
-  section > h2 { font-size: 26px; margin-bottom: 6px; }
-  section > p.lead { color: var(--muted); margin: 0 0 18px; }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 14px;
+  .hero .intro { margin-top: 18px; font-size: 20px; color: var(--muted); max-width: 32ch; }
+
+  /* Timeline on growth-chart paper */
+  .timeline {
+    margin: 36px 0 0;
+    padding: 20px 16px 14px;
+    border: 1px solid var(--grid-strong);
+    border-radius: 10px;
+    background-color: var(--surface);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 16px 16px;
   }
-  .card h3 { font-size: 20px; margin-bottom: 4px; }
-  .card .age {
-    display: inline-block; font-size: 13px; font-weight: 600;
-    background: var(--calm-soft); color: var(--calm);
-    padding: 3px 10px; border-radius: 999px; margin-bottom: 10px;
+  .dx-label {
+    position: relative;
+    height: 44px;
   }
-  .card p { margin: 6px 0 0; }
+  .dx-label span {
+    position: absolute;
+    right: 20%;
+    bottom: 6px;
+    margin-right: -1px;
+    padding-right: 8px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.25;
+    max-width: 70%;
+  }
+  .track {
+    position: relative;
+    height: 72px;
+  }
+  .window {
+    position: absolute; inset: 0 auto 0 0;
+    width: 60%;
+    background: var(--marker);
+    border-radius: 6px 0 0 6px;
+    display: flex; align-items: flex-end;
+    padding: 8px 10px;
+    color: #17324a;
+    font-size: 14px; font-weight: 600; line-height: 1.2;
+    transform-origin: left center;
+    animation: grow 900ms cubic-bezier(.2,.7,.2,1) 200ms both;
+  }
+  .gap {
+    position: absolute; top: 0; bottom: 0;
+    left: 60%; width: 20%;
+    background: repeating-linear-gradient(135deg, var(--marker-soft) 0 6px, transparent 6px 12px);
+  }
+  .dx-line {
+    position: absolute; top: -44px; bottom: 0;
+    left: 80%;
+    border-left: 2px dashed var(--ink);
+  }
+  .ticks {
+    position: relative;
+    list-style: none; margin: 0; padding: 0;
+    height: 26px;
+    border-top: 2px solid var(--ink);
+    font-size: 13px; color: var(--muted);
+  }
+  .ticks li { position: absolute; top: 4px; transform: translateX(-50%); }
+  .ticks li:first-child { transform: none; }
+  .ticks li:last-child { transform: translateX(-100%); }
+  .timeline figcaption { margin-top: 14px; font-size: 16px; }
+  .timeline figcaption small { display: block; margin-top: 6px; font-size: 13px; color: var(--muted); }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @media (prefers-reduced-motion: reduce) { .window { animation: none; } }
+
+  /* Sections */
+  section { margin-top: 56px; }
+  section > h2 + p { margin-top: 8px; color: var(--muted); }
+
+  /* Resource rows */
+  .rows { margin-top: 20px; border-top: 1px solid var(--grid-strong); }
+  .row {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--grid-strong);
+  }
+  .row .range {
+    font-size: 15px; font-weight: 800; line-height: 1.2;
+    color: var(--action);
+    padding-top: 3px;
+  }
+  .row p { margin-top: 6px; }
+  .row .fine { font-size: 15px; color: var(--muted); }
   .btn {
-    display: inline-block; margin-top: 14px;
-    background: var(--accent); color: var(--accent-ink);
-    text-decoration: none; font-weight: 600;
-    padding: 12px 18px; border-radius: 12px;
+    display: inline-block;
+    margin-top: 14px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    background: var(--action);
+    color: var(--action-ink);
+    font-weight: 600;
+    text-decoration: none;
   }
-  .btn.secondary {
-    background: transparent; color: var(--accent);
-    border: 1.5px solid var(--accent); margin-left: 6px;
+  .btn:hover { filter: brightness(1.08); }
+
+  /* Checklist */
+  .checklist { list-style: none; margin: 20px 0 0; padding: 0; }
+  .checklist li + li { margin-top: 10px; }
+  .check {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--grid-strong);
+    border-radius: 10px;
+    background: var(--surface);
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
   }
-  .steps { list-style: none; padding: 0; margin: 0; counter-reset: step; }
-  .steps li {
-    position: relative; padding: 0 0 18px 48px; counter-increment: step;
+  .box {
+    width: 28px; height: 28px;
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    display: grid; place-items: center;
+    transition: background 150ms ease;
   }
-  .steps li::before {
-    content: counter(step);
-    position: absolute; left: 0; top: 0;
-    width: 32px; height: 32px; border-radius: 50%;
-    background: var(--soft); color: var(--accent);
-    font-weight: 700; display: grid; place-items: center;
-  }
-  .steps strong { display: block; }
-  .steps span { color: var(--muted); }
-  .steps span b { color: var(--ink); font-weight: 600; }
+  .box svg { width: 18px; height: 18px; opacity: 0; transition: opacity 150ms ease; }
+  .check[aria-pressed="true"] .box { background: var(--marker); border-color: var(--marker); }
+  .check[aria-pressed="true"] .box svg { opacity: 1; }
+  .check strong { display: block; font-weight: 600; }
+  .check span.detail { display: block; margin-top: 4px; color: var(--muted); font-size: 16px; }
+  .check span.detail b { color: var(--ink); font-weight: 600; }
+  .checklist-note { margin-top: 12px; font-size: 15px; color: var(--muted); }
+
+  /* State callout */
   .callout {
-    background: var(--soft); border-radius: 16px; padding: 20px; margin-top: 8px;
+    margin-top: 56px;
+    padding: 28px 22px;
+    border-radius: 12px;
+    background: var(--ink);
+    color: var(--paper);
   }
-  .callout h3 { font-size: 20px; margin-bottom: 6px; }
-  .callout p { margin: 6px 0 0; }
-  .phone { font-size: 22px; font-weight: 600; text-decoration: none; }
-  .stats { display: grid; gap: 12px; }
-  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
-  .stat .num { font-family: Fraunces, Georgia, serif; font-size: 34px; font-weight: 700; color: var(--accent); line-height: 1.1; }
-  .stat p { margin: 6px 0 0; }
-  .stat cite { display: block; font-style: normal; font-size: 13px; color: var(--muted); margin-top: 8px; }
-  .note { font-size: 15px; color: var(--muted); }
+  .callout h2 { color: var(--paper); }
+  .callout p { margin-top: 10px; }
+  .callout blockquote {
+    margin: 18px 0 0;
+    padding: 14px 16px;
+    border-left: 4px solid var(--marker);
+    background: rgba(255,255,255,.08);
+    font-size: 19px;
+  }
+  .callout .btn { background: var(--marker); color: #17324a; }
+
+  /* Research */
+  .findings { list-style: none; margin: 20px 0 0; padding: 0; }
+  .findings li { padding: 18px 0; border-bottom: 1px solid var(--grid-strong); }
+  .findings li:first-child { border-top: 1px solid var(--grid-strong); }
+  .findings b { font-weight: 800; }
+  .findings cite { display: block; margin-top: 6px; font-style: normal; font-size: 14px; color: var(--muted); }
+  .closer { margin-top: 18px; font-size: 20px; font-weight: 600; }
+
   footer {
-    margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line);
-    font-size: 14px; color: var(--muted);
+    margin-top: 64px; padding-top: 20px;
+    border-top: 1px solid var(--grid-strong);
+    font-size: 15px; color: var(--muted);
   }
-  footer p { margin: 0 0 10px; }
-  @media (max-width: 420px) {
-    .btn.secondary { margin-left: 0; }
+  footer p + p { margin-top: 10px; }
+
+  @media (max-width: 400px) {
+    .row { grid-template-columns: 1fr; gap: 6px; }
     .btn { display: block; text-align: center; }
   }
 </style>
@@ -123,100 +241,133 @@
 <main>
 
   <header class="hero">
-    <div class="eyebrow">For parents</div>
     <h1>The earlier, the better.</h1>
-    <p>If something about your child's development feels off, you don't have to wait for a diagnosis to get help. Here's where to start.</p>
+    <p class="intro">If something about your child's development feels off, you don't need a diagnosis to get help.</p>
+
+    <figure class="timeline" aria-label="Timeline from birth to age 5. Early Intervention covers birth to age 3. The typical age of autism diagnosis in the US is about 4.">
+      <div class="dx-label"><span>Typical autism diagnosis: about age 4</span></div>
+      <div class="track">
+        <div class="window">Early Intervention: birth to 3</div>
+        <div class="gap"></div>
+        <div class="dx-line"></div>
+      </div>
+      <ol class="ticks" aria-hidden="true">
+        <li style="left:0">Birth</li>
+        <li style="left:20%">1</li>
+        <li style="left:40%">2</li>
+        <li style="left:60%">3</li>
+        <li style="left:80%">4</li>
+        <li style="left:100%">5</li>
+      </ol>
+      <figcaption>
+        Every state offers Early Intervention from birth to age 3. But most autistic kids in the US aren't diagnosed until about 4.
+        <small>Shaw et al., MMWR 2025. <a href="https://doi.org/10.15585/mmwr.ss7402a1" target="_blank" rel="noopener">doi:10.15585/mmwr.ss7402a1</a></small>
+      </figcaption>
+    </figure>
   </header>
 
   <section>
-    <h2>Is my child on track?</h2>
-    <p class="lead">Two free tools, based on your child's age.</p>
-
-    <div class="card">
-      <span class="age">2 months – 5 years</span>
-      <h3>CDC Milestone Tracker</h3>
-      <p>A free app from the CDC. Check off milestones with photos and videos, and get a summary you can show your child's doctor.</p>
-      <a class="btn" href="https://www.cdc.gov/milestonetracker" target="_blank" rel="noopener">Get the free app</a>
-    </div>
-
-    <div class="card">
-      <span class="age">16 – 30 months</span>
-      <h3>M-CHAT-R/F autism screening</h3>
-      <p>The 20-question checklist pediatricians use at the 18- and 24-month checkups. It's a screening, not a diagnosis. It tells you whether it's worth a closer look.</p>
-      <p>Ask your pediatrician to do it with you, or look at it ahead of time on the official site.</p>
-      <a class="btn" href="https://mchatscreen.com/" target="_blank" rel="noopener">Official M-CHAT site</a>
+    <h2>Check how your child is doing</h2>
+    <p>Two free tools, based on your child's age.</p>
+    <div class="rows">
+      <div class="row">
+        <div class="range">2 months to 5 years</div>
+        <div>
+          <h3>CDC Milestone Tracker</h3>
+          <p>A free app from the CDC. Check off milestones with photos and videos, and get a summary to show your child's doctor.</p>
+          <a class="btn" href="https://www.cdc.gov/milestonetracker" target="_blank" rel="noopener">Get the free app</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="range">16 to 30 months</div>
+        <div>
+          <h3>M-CHAT-R/F autism screening</h3>
+          <p>The 20-question checklist pediatricians use at the 18- and 24-month checkups. It tells you whether it's worth a closer look. It isn't a diagnosis.</p>
+          <p class="fine">Ask your pediatrician to do it with you, or read it ahead of time on the official site.</p>
+          <a class="btn" href="https://mchatscreen.com/" target="_blank" rel="noopener">Open the M-CHAT site</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <section>
-    <h2>Worried? Here's what to do.</h2>
-    <p class="lead">Do these at the same time, not one after another.</p>
-    <ol class="steps">
-      <li><strong>Talk to your pediatrician.</strong><span>Tell them what you've noticed and ask for a developmental screening.</span></li>
-      <li><strong>Get on a waitlist now.</strong><span>Autism evaluations can take months to a year to get into. Your spot in line starts when you call.</span></li>
-      <li><strong>Start therapy while you wait.</strong><span><b>Parent coaching</b>: a therapist teaches you play-based ways to build your child's communication at home. It has some of the strongest evidence for starting early. <b>Speech therapy</b> helps with talking and understanding. <b>Occupational therapy (OT)</b> helps if your child struggles with sensory issues, feeding or daily tasks. None of these require an autism diagnosis.</span></li>
-      <li><strong>Call Early Intervention (under 3).</strong><span>Every state has a free or low-cost program for babies and toddlers. You can call yourself. No referral or diagnosis needed.</span></li>
-      <li><strong>Age 3 or older? Call your school district.</strong><span>Your local public school district must evaluate children with possible disabilities for free, even if they aren't in school yet.</span></li>
-    </ol>
+    <h2>If you're worried</h2>
+    <p>Do these at the same time, not one after another. Tap each one as you go.</p>
+    <ul class="checklist">
+      <li><button class="check" type="button" aria-pressed="false" data-key="pediatrician">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#17324a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span>
+        <span><strong>Talk to your pediatrician</strong><span class="detail">Tell them what you've noticed and ask for a developmental screening.</span></span>
+      </button></li>
+      <li><button class="check" type="button" aria-pressed="false" data-key="waitlist">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#17324a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span>
+        <span><strong>Get on a waitlist now</strong><span class="detail">Autism evaluations can take months to a year to get into. Your place in line starts when you call.</span></span>
+      </button></li>
+      <li><button class="check" type="button" aria-pressed="false" data-key="therapy">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#17324a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span>
+        <span><strong>Start therapy while you wait</strong><span class="detail"><b>Parent coaching</b> teaches you play-based ways to build your child's communication at home, and has some of the strongest evidence for starting early. <b>Speech therapy</b> helps with talking and understanding. <b>Occupational therapy</b> helps with sensory issues, feeding and daily tasks. None of these need an autism diagnosis.</span></span>
+      </button></li>
+      <li><button class="check" type="button" aria-pressed="false" data-key="ei">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#17324a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span>
+        <span><strong>Under 3: call Early Intervention</strong><span class="detail">Every state has a free or low-cost program for babies and toddlers. You can call yourself. You don't need a referral or a diagnosis.</span></span>
+      </button></li>
+      <li><button class="check" type="button" aria-pressed="false" data-key="school">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#17324a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span>
+        <span><strong>3 or older: call your school district</strong><span class="detail">Your local public school district must evaluate children with possible disabilities for free, even if they aren't in school yet.</span></span>
+      </button></li>
+    </ul>
+    <p class="checklist-note">Your checks are saved on this device only.</p>
   </section>
+
+  <div class="callout">
+    <h2>Find Early Intervention in your state</h2>
+    <p>Every state and US territory has its own program. The CDC keeps a list of each one's phone number and website. When you call, you can say:</p>
+    <blockquote>"I have concerns about my child's development and I'd like an evaluation."</blockquote>
+    <a class="btn" href="https://www.cdc.gov/act-early/early-intervention/contact-information-by-state.html" target="_blank" rel="noopener">Find your state's program</a>
+  </div>
 
   <section>
     <h2>While you wait</h2>
-    <p class="lead">Free tools you can start today, from home.</p>
-
-    <div class="card">
-      <span class="age">Practice at home</span>
-      <h3>Help is in Your Hands</h3>
-      <p>Free video lessons from the UC Davis MIND Institute that teach you play-based ways to build your child's attention and communication. Made by the researchers behind the Early Start Denver Model. 4 modules, in English and Spanish.</p>
-      <p class="note">Free account required.</p>
-      <a class="btn" href="https://www.helpisinyourhands.org/" target="_blank" rel="noopener">Start the lessons</a>
+    <p>Free tools you can start today, from home.</p>
+    <div class="rows">
+      <div class="row">
+        <div class="range">Practice at home</div>
+        <div>
+          <h3>Help is in Your Hands</h3>
+          <p>Free video lessons from the UC Davis MIND Institute that teach you play-based ways to build your child's attention and communication. Made by the researchers behind the Early Start Denver Model. Four modules, in English and Spanish.</p>
+          <p class="fine">Free account required.</p>
+          <a class="btn" href="https://www.helpisinyourhands.org/" target="_blank" rel="noopener">Start the lessons</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="range">Learn the signs</div>
+        <div>
+          <h3>Autism Navigator</h3>
+          <p>A free online course from Florida State University with videos of toddlers showing early signs of autism, plus a video glossary of what to look for.</p>
+          <a class="btn" href="https://autismnavigator.com/family-resources/" target="_blank" rel="noopener">See the free resources</a>
+        </div>
+      </div>
     </div>
-
-    <div class="card">
-      <span class="age">Learn the signs</span>
-      <h3>Autism Navigator</h3>
-      <p>A free online course from Florida State University with videos of toddlers showing early signs of autism, plus a video glossary of what to look for.</p>
-      <a class="btn" href="https://autismnavigator.com/family-resources/" target="_blank" rel="noopener">Free family resources</a>
-    </div>
-
-    <p class="note">These work best alongside a real coach. Use them while you wait, but still call Early Intervention or a therapist.</p>
-  </section>
-
-  <section>
-    <div class="callout">
-      <h3>Find Early Intervention in your state</h3>
-      <p>Every state and US territory has its own program. The CDC keeps a list of each one's phone number and website.</p>
-      <p class="note">When you call, say: "I have concerns about my child's development and I'd like an evaluation."</p>
-      <a class="btn" href="https://www.cdc.gov/act-early/early-intervention/contact-information-by-state.html" target="_blank" rel="noopener">Find your state's program</a>
-    </div>
+    <p class="checklist-note">These work best alongside a real coach. Use them while you wait, and still call Early Intervention or a therapist.</p>
   </section>
 
   <section>
     <h2>Why early matters</h2>
-    <p class="lead">A child's brain changes fastest in the first few years. The research backs up starting early.</p>
-    <div class="stats">
-      <div class="stat">
-        <div class="num">~Age 4</div>
-        <p>The typical age a child in the US is diagnosed with autism, often years after the first signs.</p>
-        <cite>Shaw et al., MMWR 2025 · <a href="https://doi.org/10.15585/mmwr.ss7402a1" target="_blank" rel="noopener">doi:10.15585/mmwr.ss7402a1</a></cite>
-      </div>
-      <div class="stat">
-        <div class="num">+17.6 vs +7</div>
-        <p>In one trial, toddlers who started therapy at 18–30 months gained about 17.6 IQ points over 2 years, compared with 7 points with usual community care.</p>
-        <cite>Dawson et al., Pediatrics 2010 · <a href="https://doi.org/10.1542/peds.2009-0958" target="_blank" rel="noopener">doi:10.1542/peds.2009-0958</a></cite>
-      </div>
-      <div class="stat">
-        <div class="num">3×</div>
-        <p>Children diagnosed before age 2½ were three times more likely to show big improvements in social skills within 1–2 years.</p>
-        <cite>Gabbay-Dizdar et al., Autism 2022 · <a href="https://doi.org/10.1177/13623613211049011" target="_blank" rel="noopener">doi:10.1177/13623613211049011</a></cite>
-      </div>
-      <div class="stat">
-        <div class="num">6.7% vs 20.5%</div>
-        <p>Babies showing early signs of autism whose parents got 10 coaching sessions were far less likely to meet criteria for autism at age 3 than babies who got usual care.</p>
-        <cite>Whitehouse et al., JAMA Pediatrics 2021 · <a href="https://doi.org/10.1001/jamapediatrics.2021.3298" target="_blank" rel="noopener">doi:10.1001/jamapediatrics.2021.3298</a></cite>
-      </div>
-    </div>
-    <p class="note" style="margin-top:16px">Starting later still helps. Starting earlier can help more.</p>
+    <p>A child's brain changes fastest in the first few years. Here's what the research shows.</p>
+    <ul class="findings">
+      <li>
+        In one trial, toddlers who started therapy at 18 to 30 months gained <b>about 17.6 IQ points</b> over two years, compared with <b>7 points</b> with usual community care.
+        <cite>Dawson et al., Pediatrics 2010. <a href="https://doi.org/10.1542/peds.2009-0958" target="_blank" rel="noopener">doi:10.1542/peds.2009-0958</a></cite>
+      </li>
+      <li>
+        Children diagnosed before age 2½ were <b>three times more likely</b> to show big improvements in social skills within one to two years.
+        <cite>Gabbay-Dizdar et al., Autism 2022. <a href="https://doi.org/10.1177/13623613211049011" target="_blank" rel="noopener">doi:10.1177/13623613211049011</a></cite>
+      </li>
+      <li>
+        Babies showing early signs of autism whose parents got 10 coaching sessions were far less likely to meet criteria for autism at age 3: <b>6.7%, compared with 20.5%</b> with usual care.
+        <cite>Whitehouse et al., JAMA Pediatrics 2021. <a href="https://doi.org/10.1001/jamapediatrics.2021.3298" target="_blank" rel="noopener">doi:10.1001/jamapediatrics.2021.3298</a></cite>
+      </li>
+    </ul>
+    <p class="closer">Starting later still helps. Starting earlier can help more.</p>
   </section>
 
   <footer>
@@ -225,5 +376,22 @@
   </footer>
 
 </main>
+<script>
+  (function () {
+    var KEY = "early-screening-checklist";
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+    document.querySelectorAll(".check").forEach(function (btn) {
+      var k = btn.dataset.key;
+      if (saved[k]) btn.setAttribute("aria-pressed", "true");
+      btn.addEventListener("click", function () {
+        var on = btn.getAttribute("aria-pressed") !== "true";
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        saved[k] = on;
+        try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+      });
+    });
+  })();
+</script>
 </body>
 </html>
