@@ -224,15 +224,38 @@
   .findings cite { display: block; margin-top: 6px; font-style: normal; font-size: 14px; color: var(--muted); }
   .closer { margin-top: 18px; font-size: 20px; font-weight: 600; }
 
-  .share {
-    margin-top: 56px;
-    padding: 24px 22px;
-    border: 2px dashed var(--grid-strong);
-    border-radius: 12px;
+  .share-fab {
+    position: fixed;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    z-index: 10;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 20px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--marker);
+    color: #17324a;
+    font: inherit; font-weight: 800; font-size: 17px;
+    box-shadow: 0 6px 20px rgba(23, 50, 74, .28);
+    cursor: pointer;
   }
-  .share p { margin-top: 8px; color: var(--muted); }
-  .share button.btn { border: 0; font: inherit; font-weight: 600; cursor: pointer; }
-  .share .status { margin-top: 10px; min-height: 1.4em; font-size: 15px; font-weight: 600; color: var(--ink); }
+  .share-fab svg { width: 20px; height: 20px; }
+  .share-fab:active { transform: scale(.97); }
+  .share-status {
+    position: fixed;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: calc(max(16px, env(safe-area-inset-bottom)) + 64px);
+    z-index: 10;
+    max-width: min(320px, calc(100vw - 32px));
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 15px; font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+  .share-status:empty { display: none; }
+  main { padding-bottom: 104px; }
 
   footer {
     margin-top: 64px; padding-top: 20px;
@@ -380,19 +403,17 @@
     <p class="closer">Starting later still helps. Starting earlier can help more.</p>
   </section>
 
-  <section class="share">
-    <h2>Know a parent who needs this?</h2>
-    <p>Send them this page. It might help them start sooner.</p>
-    <button class="btn" type="button" id="share-btn">Share this page</button>
-    <p class="status" id="share-status" role="status" aria-live="polite"></p>
-  </section>
-
   <footer>
     <p><strong>This page is not medical advice</strong> and isn't a substitute for your child's doctor. Screening tools can miss things. If you're still worried after a normal result, trust your gut and talk to your pediatrician.</p>
     <p>Made by Samie Belal, a medical student. This page only links to official resources. It isn't affiliated with the CDC, any state program, or the M-CHAT authors.</p>
   </footer>
 
 </main>
+<button class="share-fab" type="button" id="share-btn" aria-label="Share this page">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>
+  Share
+</button>
+<p class="share-status" id="share-status" role="status" aria-live="polite"></p>
 <script>
   (function () {
     var KEY = "early-screening-checklist";
@@ -421,14 +442,19 @@
         navigator.share(data).catch(function () {});
         return;
       }
+      var show = function (msg) {
+        status.textContent = msg;
+        clearTimeout(show.t);
+        show.t = setTimeout(function () { status.textContent = ""; }, 4000);
+      };
       if (navigator.clipboard) {
         navigator.clipboard.writeText(location.href).then(function () {
-          status.textContent = "Link copied. Paste it in a text or DM.";
+          show("Link copied. Paste it in a text or DM.");
         }, function () {
-          status.textContent = "Copy this link: " + location.href;
+          show("Copy this link: " + location.href);
         });
       } else {
-        status.textContent = "Copy this link: " + location.href;
+        show("Copy this link: " + location.href);
       }
     });
   })();
